@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<link rel="stylesheet" href="/vendor/bootstrap-combobox/css/bootstrap-combobox.css">
+
+<script src="/vendor/bootstrap-combobox/js/bootstrap-combobox.js"></script>
+
+<style type="text/css">
+/* Adjust feedback icon position */
+#productForm .selectContainer .form-control-feedback,
+#productForm .inputGroupContainer .form-control-feedback {
+    right: -15px;
+}
+</style>
+    
+    <h2> Create Test Run </h2>
+<br/>
+    <br/>
+    
+
+<form id="productForm" method="post" class="form-horizontal">
+     <div class="form-group">
+        <label class="col-xs-3 control-label">Select a Project</label>
+        <div class="col-xs-5 selectContainer">
+            <select class="form-control" name="size">
+                <option value="">Project 1</option>
+                <option value="s">Project 2</option>
+                <option value="m">Project 3</option>
+                <option value="l">Project 4</option>
+                <option value="xl">Project 5</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Description</label>
+        <div class="col-xs-8">
+            <textarea name="description" class="form-control" rows="5"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Set Maximum Timeout </label>
+        <div class="col-xs-3 inputGroupContainer">
+            <div class="input-group">
+                <input type="text" class="form-control" name="price" />
+                <span class="input-group-addon">minutes</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Select a Device Pool</label>
+        <div class="col-xs-5 selectContainer">
+            <select class="form-control" name="size">
+                <option value="">Test App1</option>
+                <option value="s">Test App2</option>
+                <option value="m">Test App3</option>
+                <option value="l">Test App4</option>
+                <option value="xl">Test App5</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-5 col-xs-offset-3">
+            <button type="submit" class="btn btn-default">Upload .apk or ipa file</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-5 col-xs-offset-3">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>
+
+<script>
+$(document).ready(function() {
+    $('#productForm')
+        .formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            excluded: ':disabled',
+            fields: {
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The name is required'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'The name must be more than 6 and less than 30 characters long'
+                        }
+                    }
+                },
+                description: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The description is required'
+                        },
+                        stringLength: {
+                            min: 50,
+                            max: 1000,
+                            message: 'The description must be more than 50 and less than 1000 characters'
+                        }
+                    }
+                },
+                price: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The price is required'
+                        },
+                        numeric: {
+                            message: 'The price must be a number'
+                        }
+                    }
+                },
+                size: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The size is required'
+                        }
+                    }
+                },
+                color: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The color is required'
+                        }
+                    }
+                }
+            }
+        })
+        /* Using Combobox for color and size select elements */
+        .find('[name="color"], [name="size"]')
+            .combobox()
+            .end()
+});
+</script>
+    
+</body>
+</html>
