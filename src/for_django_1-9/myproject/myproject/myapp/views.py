@@ -42,3 +42,5 @@ def createRun(request):
     print "Test"
     return render(request, 'CreateTestRun.html', {})
 
+def browseiosdevices(request):
+    return render(request,'iOS_Devices.html')

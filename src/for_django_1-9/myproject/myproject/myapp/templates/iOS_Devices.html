@@ -1,0 +1,61 @@
+
+<form name="myform" action="submit" method="POST">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<table border=1>
+  <tr class="row-select">
+    <td class="check">
+      <input type="checkbox" />
+    </td>
+    <td class="id">Apple iPAD 2</td>
+    <td class="name">9.2.1</td>
+  </tr>
+
+  <tr class="row-select">
+    <td class="check">
+      <input type="checkbox" />
+    </td>
+    <td class="id">Apple iPad 2</td>
+    <td class="name">9.3</td>
+  </tr>
+
+    <tr class="row-select">
+    <td class="check">
+      <input type="checkbox" />
+    </td>
+    <td class="id">Apple iPad 2</td>
+    <td class="name">9.3.2</td>
+  </tr>
+
+</table>
+<button id="btnSelectAll">Select all</button>
+<button id="btnSubmit">Get Value</button>
+<input type="submit" id="submit" name="submit" value="Send">
+
+<script>
+$(document).ready(function() {
+
+  $('#btnSubmit').click(function() {
+
+    $('.row-select input:checked').each(function() {
+      var id, name;
+      id = $(this).closest('tr').find('.id').html();
+      name = $(this).closest('tr').find('.name').html();
+      alert('ID: ' + id + " | Name: " + name);
+    })
+
+  })
+
+
+  $('#btnSelectAll').click(function() {
+
+    $('.row-select input').each(function() {
+      $(this).prop('checked', true);
+    })
+
+  })
+
+})
+
+</script>
+
+    </form>
